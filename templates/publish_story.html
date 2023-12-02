@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container standardSize shadow">
+        <div class="inputContent">
+            <div class="descriptionArea">
+                <h1> {{ text.title('publish_story') }} </h1>
+                {{ page['description'] }}
+            </div>
+            <form method="post" enctype="multipart/form-data">
+                <input type="text" name="title" required placeholder={{ text.input('title') }} value="{{ last['title'] }}">
+                <textarea name="description" required placeholder={{ text.input('description') }}>{{ last['description'] }}</textarea>
+                {{ text.input('mention') }}
+                <input type="text" name="mention" placeholder="Made with ... . Inspired by ..." value="{{ last['mention'] }}">
+                {{ text.input('story_lang') }}
+                <select name="lang">
+                    {% for lang in text.supported_langs %}
+                        {% if lang == session['lang'] %}
+                            <option value={{ lang }} selected> {{ lang }} </option>
+                        {% else %}
+                            <option value={{ lang }}> {{ lang }} </option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                {{ text.input('publish_date') }}
+                <input type="date" name="publish_date" value={{ last['publish_date'] }}>
+                {{ text.input('genre') }}
+                <input type="text" name="genre" required placeholder="eg. cyberpunk dreamlike" value="{{ last['genre'] }}">
+                {{ text.input('image_file') }}
+                <input type="file" name="file_image" accept="image/jpeg, image/png, image/webp" required>
+                {{ text.input('story_file') }}
+                <input type="file" name="file_content" accept=".txt" required>
+                <button type="submit" name="publish_story"> {{ text.input('submit') }} </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

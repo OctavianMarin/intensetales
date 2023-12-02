@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container shadow standardSize" style="text-decoration: none;">
+        <div class="pagination">
+            <img src={{ url_for('story_image', title=story['title']) }}>
+            <div class="storyContent">
+                <div style="display:flex;flex-direction:row;width:100%;">
+                    <div style="display:flex;flex-direction:column;width:65%;">
+                        <strong>{{ story['title'] }}</strong>
+                        <span>
+                            {{ story['publish_date'] }}
+                        </span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;width:35%;">
+                        <a href={{ url_for('creator', username=story['creator']) }} style="text-decoration: None;margin-top:.8rem;"> ~ {{ story['creator'] }} </a>
+                        <span>
+                            {{ story['lang'] }}
+                        </span>
+                    </div>
+                </div>
+                {% if story['mention'] %}
+                    <div class="boxed">{{ story['mention'] }}</div>
+                {% else %}
+                    <div class="blankSpace" style="height:1rem;"></div>
+                {% endif %}
+                <div class="descUp">
+                    {{ story['description'] }}
+                    <div class="blankSpace" style="height:1.5rem;"></div>
+                    <div style="display: flex; flex-direction: row;">
+                        {% if session['username'] in story['likes'] %}
+                            <form method="post"><button class="heartButton" name="like">
+                                <img src={{ url_for('elements', element='heart') }}> {{ story['likes'].__len__() }}
+                            </button></form>
+                        {% else %}
+                            <form method="post"><button class="greyHeartButton" name="like">
+                                <img src={{ url_for('elements', element='heart') }}> {{ story['likes'].__len__() }}
+                            </button></form>
+                        {% endif %}
+                        {% for genre in story['genre'] %}
+                            <div class="boxed">{{ genre }}</div>
+                        {% endfor %}
+                        {% if session['username'] == story['creator'] %}
+                            <form method="post"><button class="editButton" name="edit">
+                                <img src={{ url_for('elements', element="edit") }}>
+                            </button></form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="descDown storyContent">
+            {{ story['description'] }}
+            <div class="blankSpace" style="height:1.5rem;"></div>
+            <div style="display: flex; flex-direction: row;">
+                {% if session['username'] in story['likes'] %}
+                    <form method="post"><button class="heartButton" name="like">
+                        <img src={{ url_for('elements', element='heart') }}> {{ story['likes'].__len__() }}
+                    </button></form>
+                {% else %}
+                    <form method="post"><button class="greyHeartButton" name="like">
+                        <img src={{ url_for('elements', element='heart') }}> {{ story['likes'].__len__() }}
+                    </button></form>
+                {% endif %}
+                {% for genre in story['genre'] %}
+                    <div class="boxed">{{ genre }}</div>
+                {% endfor %}
+                {% if session['username'] == story['creator'] %}
+                    <form method="post"><button class="editButton" name="edit">
+                        <img src={{ url_for('elements', element="edit") }}>
+                    </button></form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="container shadow standardSize">
+        <div class="storyContent">
+            {% if session['lang'] != story['lang'] %}
+                {% if original %}
+                    <form method="get" class="original">
+                        <button type="submit" name="original" value="False"> {{ text.input('see_translation') }} </button>
+                    </form>
+                {% else %}
+                    <a class="translated" href="https://www.deepl.com" target="_blank">
+                        {{ text.advice('translated_by') }}
+                        <img src={{ url_for('elements', element='DeepL') }}>
+                    </a>
+                    <form method="get" class="original">
+                        <button type="submit" name="original" value="True"> {{ text.input('see_original') }} </button>
+                    </form>
+                {% endif %}
+            {% endif %}
+            {% for paragraph in story['content'].split('\n\n') %}
+                <div class="blankSpace" style="height: 1.5rem;"></div>
+                {% for sentence in paragraph.split('\n') %}
+                    {{ sentence }}<br>
+                {% endfor %}
+                <div class="blankSpace" style="height: 1.5rem;"></div>
+            {% endfor %}
+            <a href={{ url_for('story_revisions', title=story['title']) }}>{{ text.advice('revisions_history', revisions=story['rev_num']) }}</a>
+        </div>
+    </div>
+    {% for comment in story['comments'] %}
+        <div class="container shadow standardSize">
+            <div class="inputContent">
+                <div class="commentHead">
+                    <strong>{{ comment['username'] }}</strong>
+                    <span>{{ comment['time'] }}</span>
+                </div>
+                {{ comment['content'] }}
+            </div>
+        </div>
+    {% endfor %}
+    <div class="container shadow standardSize" id="write_comment">
+        <div class="inputContent">
+            <form method="post">
+                <textarea name="comment" required placeholder="{{ text.input('write_comment') }}"></textarea>
+                <button type="submit" name="comment_sub"> {{ text.input('submit') }} </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

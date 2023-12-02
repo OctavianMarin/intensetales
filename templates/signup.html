@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container shadow standardSize">
+        <div class="inputContent">
+            <div class="descriptionArea">
+                <h1> {{ text.title('signup') }} </h1>
+                {{ text.description('signup') }}
+            </div>
+            <form method="post">
+                <input type="text" name="username" required placeholder="username" value={{ last['username'] }}>
+                <input type="email" name="email" required placeholder="email" value={{ last['email'] }}>
+                <div class="passwords">
+                    <input type="password" name="password" required placeholder="password">
+                    <input type="password" name="rep_password" required placeholder="password">
+                </div>
+                <button type="submit" name="signup_sub"> {{ text.input('submit') }} </button>
+            </form>
+            <a href={{ url_for('signin') }}> {{ text.advice('already_account') }} </a>
+        </div>
+    </div>
+{% endblock %}

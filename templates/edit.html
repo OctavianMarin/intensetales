@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% if 'changes' in session %}
+        <div class="veil"></div>
+        <div class="popup container shadow standardSize">
+            <div class="inputContent">
+                <div class="descriptionArea">
+                    {{ text.popup('changes') }}
+                </div>
+                {% for change in session['changes'] %}
+                    <div class="descriptor">
+                        <strong> {{ change }} </strong>
+                        <span> {{ session['changes'][change] }} </span>
+                    </div>
+                {% endfor %}
+                <div class="blankSpace" style="height:2rem;"></div>
+                <form method="post">
+                    <input type="password" name="conf_password" placeholder="password">
+                    <button type="submit" name="conf_sub"> {{ text.input('submit') }} </button>
+                    <button type="submit" name="conf_close"> {{ text.input('close') }} </button>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+    <div class="container standardSize shadow">
+        <div class="inputContent">
+            <div class="descriptionArea">
+                <h1> {{ text.title('edit', title=story['title']) }}</h1>
+                {{ text.description('edit') }}
+            </div>
+            <form method="post">
+                <input type="text" name="title" required placeholder={{ text.input('title') }} value="{{ story['title'] }}">
+                <button type="submit" name="change_title"> {{ text.input('change_title') }} </button>
+            </form>
+            <form method="post">
+                <textarea name="description" required placeholder={{ text.input('description') }}>{{ story['description'] }}</textarea>
+                <button type="submit" name="change_description"> {{ text.input('change_description') }} </button>
+            </form>
+            <form method="post">
+                {{ text.input('mention') }}
+                <input type="text" name="mention" placeholder="Made with ... . Inspired by ..." value="{{ story['mention'] }}">
+                <button type="submit" name="change_mention"> {{ text.input('change_mention') }} </button>
+            </form>
+            <form method="post">
+                {{ text.input('story_lang') }}
+                <select name="lang">
+                    {% for lang in text.supported_langs %}
+                        {% if lang == story['lang'] %}
+                            <option value={{ lang }} selected> {{ lang }} </option>
+                        {% else %}
+                            <option value={{ lang }}> {{ lang }} </option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <button type="submit" name="change_lang"> {{ text.input('change_lang') }} </button>
+            </form>
+            <form method="post">
+                {{ text.input('publish_date') }}
+                <input type="date" name="publish_date" required value="{{ story['publish_date'] }}">
+                <button type="submit" name="change_publish_date"> {{ text.input('change_publish_date') }}</button>
+            </form>
+            <form method="post">
+                {{ text.input('genre') }}
+                <input type="text" name="genre" required placeholder="eg. cyberpunk dreamlike" value="{{ story['genre'] }}">
+                <button type="submit" name="change_genre"> {{ text.input('change_genres') }} </button>
+            </form>
+            <form method="post" enctype="multipart/form-data">
+                {{ text.input('image_file') }}
+                <input type="file" name="file_image" accept="image/jpeg, image/png, image/webp" required>
+                <img src={{ url_for('story_image', title=story['title']) }} style="width:200px;border-radius:2rem;"><br>
+                <button type="submit" name="change_file_image"> {{ text.input('change_image_file') }} </button>
+            </form>
+            <a href={{ url_for('story_revisions', title=story['title']) }}> {{ text.advice('manage_content') }} </a>
+            <div class="blankSpace" style="height:3rem;"></div>
+            <form method="post">
+                <button type="submit" name="delete_story"> {{ text.input('delete_story') }} </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

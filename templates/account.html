@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% if 'changes' in session %}
+        <div class="veil"></div>
+        <div class="popup container shadow standardSize">
+            <div class="inputContent">
+                <div class="descriptionArea">
+                    {{ text.popup('changes') }}
+                </div>
+                {% for change in session['changes'] %}
+                    <div class="descriptor">
+                        <strong> {{ change }} </strong>
+                        <span> {{ session['changes'][change] }} </span>
+                    </div>
+                {% endfor %}
+                <div class="blankSpace" style="height:2rem;"></div>
+                <form method="post">
+                    <input type="password" name="conf_password" placeholder="password">
+                    <button type="submit" name="conf_sub"> {{ text.input('submit') }} </button>
+                    <button type="submit" name="conf_close"> {{ text.input('close') }} </button>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+    <div class="container shadow standardSize">
+        <div class="inputContent">
+            <div class="descriptionArea">
+                <h1> {{ text.title('account') }} </h1>
+                {{ text.description('account') }}
+            </div>
+            <div class="descriptor">
+                <strong> {{ text.descriptor('username') }} </strong>
+                <span> {{ user['username'] }} </span>
+            </div>
+            <div class="descriptor">
+                <strong> {{ text.descriptor('email') }} </strong>
+                <span> {{ user['email'] }} </span>
+            </div>
+            <form method="get">
+                <button type="submit" name="actions" value={{ not page['actions'] }}> {{ text.input('actions') }} </button>
+            </form>
+            {% if user['creator'] == False %}
+                <a href={{ url_for('creator', username=session['username']) }}> {{ text.advice('become_creator') }} </a>
+            {% else %}
+                <a href={{ url_for('creator', username=session['username']) }}> {{ text.advice('creator_page') }} </a>
+            {% endif %}
+            {% if page['actions'] %}
+                <div class="blankSpace" style="height:3rem;"></div>
+                <form method="post">
+                    <input type="email" name="email" required placeholder="email">
+                    <button type="submit" name="email_sub"> {{ text.input('change_email') }} </button>
+                </form>
+                <form method="post">
+                    <div class="passwords">
+                        <input type="password" name="password" required placeholder="password">
+                        <input type="password" name="rep_password" required placeholder="password">
+                    </div>
+                    <button type="submit" name="password_sub"> {{ text.input('change_password') }} </button>
+                </form>
+                <div class="blankSpace" style="height:3rem;"></div>
+                <form method="post">
+                    <button type="submit" name="download_data"> {{ text.input('download_data') }} </button><br>
+                    <button type="submit" name="signout"> {{ text.input('signout') }} </button>
+                    <button type="submit" name="delete"> {{ text.input('delete_account') }} </button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

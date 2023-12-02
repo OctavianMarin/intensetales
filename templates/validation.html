@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container shadow standardSize">
+        <div class="inputContent">
+            <div class="descriptionArea">
+                <h1> {{ text.title('validation') }} </h1>
+                {{ text.description('validation') }} {{ email }}
+            </div>
+            <form method="post">
+                <input type="text" name="code" placeholder="code">
+                <button type="submit" name="resend"> {{ text.input('resend') }} </button>
+                <button type="submit" name="validation_sub"> {{ text.input('submit') }} </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

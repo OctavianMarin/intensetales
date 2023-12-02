@@ -1,0 +1,348 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500&display=swap');
+
+* {
+    font-family: 'League Spartan', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fafafa;
+    color: #727f8a;
+}
+
+strong {
+    color: #47a9f5;
+}
+
+.blankSpace {
+    display: flex;
+    width: 100%;
+}
+
+.appBar {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: #fff;
+}
+
+.cookies {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    font-size: 1.3rem;
+    background-color: white;
+}
+
+.cookies strong {
+    font-size: 2.4rem;
+    margin-bottom: .4rem;
+}
+
+header {
+    font-size: 1.8rem;
+    padding: 0.6rem;
+}
+
+header strong {
+    color: #45cece;
+    font-size: 2.4rem;
+}
+
+.center {
+    width: 1000px;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainZone {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.mainZone img {
+    width: 400px;
+    max-width: 95%;
+    margin-right: 3rem;
+}
+
+.headline {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    font-weight: bold;
+    font-size: 4rem;
+}
+
+.subheadline {
+    margin-top: 3rem;
+    font-size: 2.3rem;
+}
+
+.serviceZone, .Form {
+    display: flex;
+    margin-top: 3rem;
+    flex-direction: column;
+    font-size: 3rem;
+}
+
+.serviceZone p, form p {
+    font-size: 2rem;
+    margin: 1rem;
+    padding: 0;
+}
+
+form label {
+    font-size: 1.8rem;
+}
+
+.question {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+input, textarea {
+    font-size: 1.8rem;
+    border-radius: 0.7rem;
+    border: solid 3px #727f8a;
+}
+
+.contactZone {
+    display: flex;
+    margin-top: 3rem;
+    align-items: center;
+    justify-content: center;
+    height: 4px;
+    background-color: #727f8a;;
+    width: 100%;
+}
+
+.contactZone a {
+    background-color: #47a9f5;
+    max-width: 70%;
+    color: white;
+    font-size: 2.3rem;
+    padding: 1rem;
+    border: None;
+    border-radius: 1.5rem;
+    text-decoration: None;
+}
+
+button {
+    background-color: #47a9f5;
+    color: white;
+    font-size: 1.5rem;
+    padding: 1rem;
+    border: None;
+    border-radius: 1.5rem;
+    width: 10rem;
+    min-width: 30%;
+}
+
+.question button {
+    margin: 2rem;
+}
+
+.shadow {
+    box-shadow: #727f8a 0px 1px 3px 0px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .mainZone {
+        flex-direction: column-reverse;
+        margin-top: 3.5rem;
+        justify-content: center;
+    }
+
+    .mainZone img {
+        margin-top: 2rem;
+    }
+
+    .headline {
+        font-size: 3.2rem;
+        align-items: center;
+    }
+
+    .subheadline {
+        margin-top: 1.5rem;
+        font-size: 2rem;
+        align-items: center;
+    }
+
+    .contactZone {
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+    }
+
+    .contactZone a {
+        font-size: 1.8rem;
+    }
+
+    .service {
+        font-size: 2rem;
+    }
+}dex: 4;
+    top: 50%;
+    left: 50%;
+    z-index: 11;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.blankSpace {
+    width: 100%;
+}
+
+.appBarLayer {
+    background-color: #78909C;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    padding-bottom: 5px;
+    opacity: 80%;
+    height: 4.5rem;
+}
+
+.appBar {
+    position: fixed;
+    top: 0px;
+    background-color: white;
+    color: #90A4AE;
+    display: flex;
+    justify-content: end;
+    border-radius: 0rem 0rem 2rem 2rem;
+}
+
+.appBar a {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-stretch: expanded;
+    text-decoration: none;
+    background-color: #F5F5F5;
+    padding: .5rem;
+    border-radius: 2rem 2rem 2rem 2rem;
+    margin: .7rem;
+    min-width: 7rem;
+    z-index: 99;
+}
+
+.appBarHome {
+    position: fixed;
+    top: 0px;
+    right: 50%;
+    display: flex;
+    justify-content: start;
+}
+
+.appBarHome img {
+    height: 3.5rem;
+    margin-top: .3rem;
+    margin-left: .8rem;
+}
+
+.boxed {
+    display: flex;
+    background-color: #ECEFF1;
+    padding: .5rem;
+    border-radius: 1rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    margin-right: .3rem;
+}
+
+.taleContent {
+    display: flex;
+    width: 100%;
+    border-radius: 3rem;
+    background-color: #ECEFF1;
+    padding: 2rem;
+    margin: 1rem;
+}
+
+.heartButton, .greyHeartButton, .editButton {
+    font-size: 1.5rem;
+    min-width: 5rem;
+    height: 2.5rem;
+}
+
+.heartButton img, .greyHeartButton img, .editButton img {
+    height: 2rem;
+}
+
+.editButton {
+    min-width: 4rem;
+    margin-right: 0px;
+}
+
+.heartButton {
+    background-color: #E57373;
+}
+
+.greyHeartButton {
+    background-color: #78909C;
+}
+
+.commentHead {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+.commentHead strong {
+    font-size: 1.8rem;
+    width: 75%;
+}
+
+.commentHead span {
+    display: flex;
+    color: #90A4AE;
+    width: 25%;
+    font-size: 1.1rem;
+    justify-content: end;
+    align-items: end;
+}
+
+.translated {
+    display: flex;
+    margin-top: 0px;
+    text-decoration: none;
+    justify-content: end;
+}
+
+.translated img {
+    margin-left: 1rem;
+    margin-right: .5rem;
+}
+
+.original {
+    display: flex;
+    justify-content: end;
+}
+
+.original button {
+    font-size: 1rem;
+    height: 1.7rem;
+    width: 13rem;
+}

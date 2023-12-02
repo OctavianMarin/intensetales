@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container shadow standardSize">
+        <div class="inputContent">
+            <div class="descriptionArea">
+                <h1>{{ page['title'] }}</h1>
+                {{ page['description'] }}
+            </div>
+            <div class="boxed">{{ page['citation'][0] }}</div>
+            <div style="display:flex; justify-content: end">{{ page['citation'][1] }}</div>
+        </div>
+    </div>
+    {% for story in stories %}
+        <a class="container shadow standardSize" href={{ url_for('story_page', title=story['title']) }} style="text-decoration: none;">
+            <div class="pagination">
+                <img src={{ url_for('story_image', title=story['title']) }}>
+                <div class="storyContent">
+                    <div style="display:flex;flex-direction:row;">
+                        <div style="display:flex;flex-direction:column;width:60%;">
+                            <strong>{{ story['title'] }}</strong>
+                            <span>
+                                {{ story['publish_date'] }}
+                            </span>
+                        </div>
+                        <div style="display:flex;flex-direction:column;width:40%;">
+                            <div class="blankSpace" style="height:.8rem;"></div>
+                            ~ {{ story['creator'] }}
+                            <span>
+                                {{ story['lang'] }}
+                            </span>
+                        </div>
+                    </div>
+                    {% if story['mention'][text.lang] %}
+                        <div class="boxed">{{ story['mention'][text.lang] }}</div>
+                    {% else %}
+                        <div class="blankSpace" style="height:1rem;"></div>
+                    {% endif %}
+                    <div class="descUp">
+                        {{ story['description'][text.lang] }}
+                        <div class="blankSpace" style="height:1.5rem;"></div>
+                        <div style="display: flex; flex-direction: row;">
+                            {% if session['username'] in story['likes'] %}
+                                <button class="heartButton">
+                                    <img src={{ url_for('elements', element='heart') }}> {{ story['likes'].__len__() }}
+                                </button>
+                            {% else %}
+                                <button class="greyHeartButton">
+                                    <img src={{ url_for('elements', element='heart') }}> {{ story['likes'].__len__() }}
+                                </button>
+                            {% endif %}
+                            {% for genre in story['genre'] %}
+                                <div class="boxed">{{ genre }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="descDown storyContent">
+                {{ story['description'][text.lang] }}
+                <div class="blankSpace" style="height:1.5rem;"></div>
+                <div style="display: flex; flex-direction: row;">
+                    {% if session['username'] in story['likes'] %}
+                        <button class="heartButton">
+                            <img src={{ url_for('elements', element='heart') }}> {{ story['likes'].__len__() }}
+                        </button>
+                    {% else %}
+                        <button class="greyHeartButton">
+                            <img src={{ url_for('elements', element='heart') }}> {{ story['likes'].__len__() }}
+                        </button>
+                    {% endif %}
+                    {% for genre in story['genre'] %}
+                        <div class="boxed">{{ genre }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+{% endblock %}

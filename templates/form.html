@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %} Form Conoscitivo - Naomi Online Group {% endblock %}
+{% block body %}
+    <form method="post" class="Form">
+        Form conoscitivo
+        <div class="question">
+            <p>
+                Hai un sito sul quale è esposto il tuo software? Se sì, lascia l'URL qui,
+                altrimenti lascia vuoto
+            </p>
+            <input type='text' name='site_url' placeholder="https://iltuosoftware.com">
+        </div>
+        <div class="question">
+            <p> Descrivi in <strong>una frase</strong> cosa fa il tuo software </p>
+            <textarea name="description" style="height:4rem;"></textarea>
+        </div>
+        <div class="question">
+            <p>
+                Quanto budget hai a disposizione per marketing e servizi pubblicitari?
+                É fortemente consigliato un <strong>minimo di 10 mila euro</strong>
+            </p>
+            <input type="text" name="budget" placeholder="X mila euro">
+        </div>
+        <div class="question">
+            <p>
+                Qual è il prezzo del tuo software (o prezzo di abbonamento/tempo)?
+                Puoi lasciare un range se vendi più prodotti
+            </p>
+            <input type="text" name="price">
+        </div>
+        <div class="question">
+            <p>
+                Quante unità hai venduto fin'ora? (è accettatta anche una risposta
+                discretamente approssimata)
+            </p>
+            <input type="text" name="sales">
+        </div>
+        <div class="question">
+            <p>
+                Quali di queste azioni stai provando o hai provato per migliorare le
+                vendite?
+            </p>
+            <div>
+                <input type="checkbox" name="tryied" value="SEO" id="SEO">
+                <label for="SEO"> ottimizzazione del SEO </label>
+            </div><div>
+                <input type="checkbox" name="tryied" value="social" id="social">
+                <label for="social"> comunicazione sui social </label>
+            </div><div>
+                <input type="checkbox" name="tryied" value="advertising" id="advertising">
+                <label for="advertising"> advertising a pagamento </label>
+            </div><div>
+                <input type="checkbox" name="tryied" value="outreach" id="outreach">
+                <label for="outreach"> contatto diretto tramite mail/messaggi ai potenziali clienti </label>
+            </div><div>
+                <input type="checkbox" name="tryied" value="verbal" id="verbal">
+                <label for="verbal"> contatto verbale con potenziali clienti </label>
+            </div><div>
+                <input type="checkbox" name="tryied" value="agency" id="agency">
+                <label for="agency"> affidamento ad un'agenzia di marketing </label>
+            </div>
+        </div>
+        <div class="question">
+            <p>
+                Ci accorderemo insieme via chat su quando organizzare la videochiamata.
+                Lascia un contatto <strong>discord</strong> o <strong>messenger</strong>
+                specificando la piattaforma prescelta
+            </p>
+            <input type="text" name="contact" placeholder="piattaforma: contatto">
+        </div>
+        <div class="question">
+            <button name="send_info"> Invia </button>
+        </div>
+    </form>
+{% endblock %}

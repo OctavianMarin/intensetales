@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %} Naomi Online Group {% endblock %}
+{% block body %}
+    <div class="mainZone">
+        <img src="{{ url_for('elements', element='main.png') }}">
+        <div style="display:flex; flex-direction: column;">
+            <div class="headline">
+                <div>Fai <strong>decollare</strong></div>
+                <div>il tuo <strong>software</strong>!</div>
+            </div>
+            <div class="subheadline">
+                Trasforma il tuo progetto in un <strong>successo redditizio</strong>
+                in 4 mesi di collaborazione con noi
+            </div>
+        </div>
+    </div>
+    <div class="contactZone">
+        <a href="{{ url_for('form') }}">Ottieni una videochiamata conoscitiva</a>
+    </div>
+    <div class="serviceZone">
+        Cosa ti offriamo?
+        <p>
+            Aiutiamo i creatori di software molto validi a <strong>raggiungere i clienti</strong>
+            che gli spettano tramite <strong>campagne di acquisizione</strong> mirate ed efficaci.
+        </p>
+	<p>
+	    Per un periodo iniziale di 4 mesi, successivamente prolungabile,
+	    ti guideremo nella scelta e nello <strong>sfruttamento dei canali di traffico</strong>
+	    e nella <strong>conversione del traffico in vendite</strong>.
+	    Miglioriamo costantemente la strategia che stiamo adottando nel tuo specifico caso
+	    sulla base dei <strong>dati che raccogliamo</strong>.
+        <p>
+            <strong>Selezioniamo scrupolosamente</strong> i clienti con cui lavorare,
+            quindi non ti accetteremo se non siamo <strong>sicuri di portarti risultati</strong>.
+        </p>
+    </div>
+    <div class="serviceZone">
+        Cosa ci distingue?
+        <p>
+            Il nostro interesse è sui <strong>tuoi risultati</strong>.
+            Vogliamo <strong>vederti crescere</strong> e procurarti <strong>entrate
+            di molto maggiori</strong> alle tue spese con noi.
+        </p>
+        <p>
+            Non ti offriamo un semplice servizio, come la gestione delle ads
+            o il miglioramento del sito, a sè stante
+            ma ti aiutiamo a strutturare un <strong>processo di acquisizione
+            completo e funzionale</strong>.
+        </p>
+    </div>
+    <div class="contactZone">
+        <a href="{{ url_for('form') }}">Ottieni una videochiamata conoscitiva</a>
+    </div>
+    <div class="serviceZone">
+        Cosa ottieni contattandonci?
+        <p>
+            Ti chiediamo prima di tutto di compilare un <strong>form conoscitivo</strong>
+            che servirà a noi per farci un'idea sulla tua situazione ma che contiene anche
+            informazioni utili a te per decidere se proseguire.
+        </p>
+        <p>
+            Accordandoci per chat,
+            organizzeremo una consulenza gratuita in <strong>videochiamata</strong>
+            nella quale analizzeremo il tuo prodotto per valutare
+            la possibilità di collaborare insieme e creeremo una bozza di campanga
+            <strong>su misura per te</strong>.
+            Avrai naturalmente la possibilità
+            di porci domande per conoscerci meglio e comprendere il nostro modo
+            di procedere.
+        </p>
+        <p>
+            Se saremo tutti interessati a procedere, ci prenderemo un paio di giorni per
+            <strong>analizzare il mercato</strong> nel quale vuoi introdurti e offrirti
+            una risposta definitiva.
+        </p>
+    </div>
+{% endblock %}

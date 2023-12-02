@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container shadow standardSize">
+        <div class="inputContent">
+            <div class="descriptionArea">
+                <h1> {{ text.title('revisions', title=story['title']) }} </h1>
+                {{ text.description('revisions') }}
+            </div>
+            <form method="get">
+                {% for date in story['content'] %}
+                    <button name="date_download" value="{{ date }}"> {{ date }} </button>
+                {% endfor %}
+            </form>
+            {% if session['username'] == story['creator'] %}
+                <form method="get">
+                    <button name="upload_new_revision" value={{ not upload_new_revision }}>{{ text.input('upload_new_revision') }}</button>
+                </form>
+                {% if upload_new_revision %}
+                    <div class="blankSpace" style="height:3rem;"></div>
+                    <form method="post" enctype="multipart/form-data">
+                        {{ text.input('story_file') }}
+                        <input type="file" name="file_content" accept=".txt" required>
+                        <button name="new_revision_sub"> {{ text.input('submit') }} </button>
+                    </form>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
