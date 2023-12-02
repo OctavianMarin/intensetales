@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /account/
+Disallow: /story/*/revisions/
+Disallow: /story/*/edit/
+Disallow: /reset_password/
+Disallow: /validation/
+
+Sitemap: https://intensetales.com/sitemap.txt
