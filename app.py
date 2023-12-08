@@ -127,7 +127,7 @@ class Utils:
         for lang in lang_to_code:
             req = requests.post(
                 "https://api-free.deepl.com/v2/translate",
-                headers={'Authorization': 'DeepL-Auth-Key 2c37f3ab-e66c-2b62-8266-da91a62d043e:fx'},
+                headers={'Authorization': ':)'},
                 data={
                     'text': text,
                     'target_lang': lang_to_code[lang]
@@ -227,8 +227,8 @@ class SendMail:
             """,
             subtype='html'
         )
-        server = smtplib.SMTP_SSL('smtps.aruba.it', 465)
-        server.login('noreply@intensetales.com', 'MfNdgHZ8WMrTi4X#$')
+        server = smtplib.SMTP_SSL(':)', 465)
+        server.login('noreply@intensetales.com', ':)')
         server.send_message(message)
         # server.sendmail('noreply@intensetales.com', address, message.as_string())
 
